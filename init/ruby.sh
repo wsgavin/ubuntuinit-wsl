@@ -1,5 +1,42 @@
 #!/bin/sh
 
+args() {
+
+  if ! options=$(getopt -o gr --long gems --long remove -- "$@")
+  then
+    usage
+    exit 1
+  fi
+
+  eval set -- "$options"
+
+  while true; do
+    case "$1" in
+      -g | --gems ) shift; break ;;
+      -r | --remove ) remove_rbenv shift; break ;;
+      -- ) usage shift; break ;;
+      * ) usage ;;
+    esac
+  done
+}
+
+
+usage() {
+  echo "Usage: $0 [options]"
+  echo ""
+  echo " -g,--gems           List of gems to be installed separated by a comma"
+  echo " -r,--remove         Remove the rbenv (ruby) installation"
+}
+
+remove_rbenv() {
+
+  rm -rf ~/.rbenv ~/.gemrc ~/.gem ~/.bundler
+  sed -i '/#### rbenv/, /#### rbenv/d' ~/.bashrc
+
+  exit 0
+
+}
+
 # Setting some color constants
 COLOR_GREEN="\x1b[0;32m"
 COLOR_RESET="\x1b[0m"
@@ -24,7 +61,7 @@ eval "$(rbenv init -)"
 # Grabbing the latest version release of ruby.
 RUBY_VER="$(rbenv install -l | sed -n '/^[[:space:]]*[0-9]\{1,\}\.[0-9]\{1,\}\.[0-9]\{1,\}[[:space:]]*$/ h;${g;p;}' | tr -d '[:space:]')"
 
-cat <<EOT >> ${HOME}/.bashrc
+cat << EOT >> "${HOME}"/.bashrc
 
 #### rbenv ####
 
