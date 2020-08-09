@@ -10,7 +10,7 @@ command -v lsb_release >/dev/null 2>&1 ||
 dist_id=$(lsb_release -si)
 release=$(lsb_release -sr)
 dist_id_support="Ubuntu"
-release_support="17.04,17.10,18.04,18.10,19.04"
+release_support="17.04,17.10,18.04,18.10,19.04,20.04"
 
 # Setting some color constants
 COLOR_GREEN="\x1b[0;32m"

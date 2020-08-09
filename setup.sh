@@ -24,14 +24,16 @@ sudo apt upgrade -y
 sudo apt install git -y
 sudo apt install vim -y
 sudo apt install nmap -y
-sudo apt install moreutils -y
+#sudo apt install moreutils -y
 sudo apt install curl -y
 sudo apt install ctags -y
-sudo apt install atom -y
+#sudo apt install atom -y
 sudo apt install google-chrome-stable -y
 sudo apt install shellcheck -y
 sudo apt install xclip -y
-sudo apt install sqlite3 -y
+#sudo apt install sqlite3 -y
+
+sudo snap install --classic code
 
 sudo apt install build-essential -y
 sudo apt install linux-headers-"$(uname -r)" -y
@@ -55,13 +57,13 @@ sudo apt autoclean
 sudo apt autoremove -y
 
 # Initializing scripts...
-. init/gnome.sh
+# . init/gnome.sh
 . init/git.sh
 . init/vim.sh
 . init/bash.sh
 . init/ssh.sh
-. init/nodejs.sh
-. init/atom.sh
+# . init/nodejs.sh
+# . init/atom.sh
 . init/ruby.sh
 . init/python.sh
 . init/aws.sh
