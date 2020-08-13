@@ -3,6 +3,7 @@
 echo
 printf "Initializing home directory with dotfiles..."
 cp -r home/.[!.]* ~/
+cp -r home/bin ~/
 echo "done."
 
 
