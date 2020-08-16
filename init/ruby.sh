@@ -70,6 +70,8 @@ export PATH="\$RBENV_ROOT/bin:\$PATH"
 
 eval "\$(rbenv init -)"
 
+git -C ~/.rbenv/plugins/ruby-build/ pull 2>/dev/null 1>/dev/null
+
 export RUBY_VER_INSTALLED="${RUBY_VER}"
 export RUBY_VER_LATEST="\$(rbenv install --list 2>/dev/null | sed -n '/^[[:space:]]*[0-9]\{1,\}\.[0-9]\{1,\}\.[0-9]\{1,\}[[:space:]]*\$/ h;\${g;p;}' | tr -d '[:space:]')"
 
